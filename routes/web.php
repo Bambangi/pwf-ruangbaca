@@ -15,10 +15,16 @@ Route::get('/', function () {
     return view('home');
 });
 
-Route::get('/buku','BukuController@index');
-
 
 Route::get('/blog', function () {
     return view('blog');
 });
+
+// CONTROLLER BUKU
+Route::get('/buku','BukuController@index');
+Route::get('/buku/create','BukuController@create');
+Route::post('/buku','BukuController@store');
+
+// utk mlht satu buku scr detail
+Route::get('/buku/{ buku }','BukuController@show'); 
 
