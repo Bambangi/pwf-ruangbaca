@@ -12,12 +12,12 @@ class BukuController extends Controller
     {
         $books = Book::all();
         // $book = DB::table('books')->get();
-        return view('book.index', compact('books')); 
+        return view('buku/index', compact('books')); 
     }
 
     public function create()
     {
-        return view('book.create');
+        return view('buku/create');
     }
  
     public function store(Request $request)
@@ -26,9 +26,9 @@ class BukuController extends Controller
         return redirect('/buku');
     }
 
-    public function show($id)
+    public function show(Book $books)
     {
-        //
+        return view('buku/show', compact('books'));
     }
 
     public function edit($id)

@@ -33,6 +33,7 @@
                 <td>{{ $book->penerbit_buku }}</td>
                 <td>{{ $book->tahun__terbit }}</td>
                 <td>
+                <a href="/buku/{{ $book->id }}" class="badge badge-warning">Detail</a>
                 <a href="" class="badge badge-success">Edit</a>
                 <a href="" class="badge badge-danger">Hapus</a>
                 </td>

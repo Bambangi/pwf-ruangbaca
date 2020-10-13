@@ -26,5 +26,5 @@ Route::get('/buku/create','BukuController@create');
 Route::post('/buku','BukuController@store');
 
 // utk mlht satu buku scr detail
-Route::get('/buku/{ buku }','BukuController@show'); 
+Route::get('/buku/{ book }','BukuController@show'); 
 
