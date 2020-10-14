@@ -23,8 +23,12 @@ Route::get('/blog', function () {
 // CONTROLLER BUKU
 Route::get('/buku','BukuController@index');
 Route::get('/buku/create','BukuController@create');
-Route::post('/buku','BukuController@store');
+Route::post('/buku/store','BukuController@store');
+Route::get('/buku/edit/{id}','BukuController@edit');
+Route::put('/buku/update/{id}','BukuController@update');
 
 // utk mlht satu buku scr detail
-Route::get('/buku/{ book }','BukuController@show'); 
+Route::get('/buku/{buku}','BukuController@show'); 
+Route::get('/buku/delete/{id}','BukuController@destroy'); 
 
+ 

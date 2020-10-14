@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateBooksTable extends Migration
+class CreateBukuTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,12 @@ class CreateBooksTable extends Migration
      */
     public function up()
     {
-        Schema::create('books', function (Blueprint $table) {
+        Schema::create('buku', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('judul_buku')->unique();
             $table->string('penulis_buku');
             $table->string('penerbit_buku');
-            $table->year('tahun_terbit');
+            $table->integer('tahun_terbit');
             $table->timestamps();
         });
     }
@@ -30,6 +30,6 @@ class CreateBooksTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('books');
+        Schema::dropIfExists('buku');
     }
 }
