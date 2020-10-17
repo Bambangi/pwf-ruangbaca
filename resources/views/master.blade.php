@@ -6,52 +6,64 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{url('https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css')}}" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="{{asset('/css/style.css')}}">
     
+
+    <!-- FONT GOOGLE -->
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap" rel="stylesheet">
     <!-- <link rel="stylesheet" type="text/css" href="{{ asset('/app.css') }}">  -->
 
     <title>@yield('title')</title>
   </head>
   <body>
-    
 
-    <!-- BAGIAN NAVBAR -->
-    <div class="container">
-      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand" href="#">BamAkmal-RuBa</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-          <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-              <a class="nav-link" href="{{ url('/') }}">Home</a>
-              <a class="nav-link" href="{{ url('/buku') }}">Buku</a>
-              <a class="nav-link" href="{{ url('/blog') }}">Blog</a>
-          </ul>
-          <form class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" type="search" placeholder="Masukkan nama buku">
-            <button class="btn btn-warning my-2 my-sm-0" type="submit">Cari Buku</button>
-          </form>
-        </div>
-      </nav>
+    <div class="row">
+      <div class="col-sm-12">
+        <nav class="navbar navbar-expand-lg navbar-dark fixed-top" style="background-color: #222A35;">
+          <div class="container">
+            <a class="navbar-brand" href="{{url('/')}}">Ruang Baca</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <div class="navbar-nav ml-auto">
+                  <a class="nav-item nav-link" href="{{url('/')}}">Home</a>
+                  <a class="nav-item nav-link" href="{{url('/buku')}}">Buku</a>  
+                  <a class="nav-item nav-link" href="{{url('/blog')}}">Blog</a>
+                  <form class="form-inline my-2 my-lg-0">
+                    <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Register</button>
+                    <input class="form-control ml-sm-2" type="email" placeholder="Masukkan emailmu!">
+                  </form>
+                </div>
+            </div>
+          </div>  
+        </nav>
+      </div>
     </div>
+
+
+
+    
     <!-- END BAGIAN NAVBAR -->
 
 
     <!-- BAGIAN KONTEN/ISI -->
     <div class="container">
-        @yield('content')
+      @yield('content')
     </div>
 
     <!-- BAGIAN FOOTER -->
-    <div class="container">
-        <div class="row text-center">
-            <div class="col">
-                <p>Dibuat dengan Senang Hati &copy Bambang & Akmal 2020. Allright reserved</p>
-            </div>
+    <footer class="copyright">
+      <div class="container text-center">
+        <div class="row">
+          <div class="col-sm-12">
+          <p>Dibuat dengan Senang Hati &copy Bambang & Akmal 2020. Allright reserved</p>
+          </div>
         </div>
-    </div>
+      </div>
+    </footer>
     <!-- END BAGIAN FOOTER -->
 
     <!-- Optional JavaScript -->

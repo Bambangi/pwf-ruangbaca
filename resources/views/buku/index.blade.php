@@ -2,7 +2,6 @@
 
 @section('title', 'Buku')
 
-@section('content')
     <div class="jumbotron jumbotron-fluid text-center">
         <div class="container">
             <h1>Donasi Buku</h1>
@@ -10,59 +9,67 @@
         </div>
     </div>
 
-    <a href="/buku/create" class="btn btn-primary my-3">Tambahkan Buku Baru</a>
-    
-    @if (session('status tambah buku berhasil'))
-        <div class="alert alert-success">
-            {{ session('status tambah buku berhasil') }}
+@section('content')
+
+    <section>
+        <div class="container">
+            <h2 class="judul-section text-center">Daftar Buku</h2>
+            <hr>
+            
+            <a href="/buku/create" class="btn btn-primary my-3">Tambahkan Buku Baru</a>
+        
+            @if (session('status tambah buku berhasil'))
+                <div class="alert alert-success">
+                    {{ session('status tambah buku berhasil') }}
+                </div>
+            @endif
+
+            @if (session('status edit berhasil'))
+                <!-- <div class="alert alert-primary">
+                    {{ session('$buku->id') }}
+                </div> -->
+
+                <div class="alert alert-warning">
+                    {{ session('status edit berhasil') }}
+                </div>
+            @endif
+
+            @if(session('status hapus berhasil'))
+                <div class="alert alert-danger">
+                    {{ session('status hapus berhasil') }}
+                </div>
+            @endif
+
+            <table class="table">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Judul Buku</th>
+                        <th scope="col">Penulis Buku</th>
+                        <th scope="col">Penerbit Buku</th>
+                        <th scope="col">Tahun Terbit</th>
+                        <th scope="col">Tindakan</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                @foreach( $buku as $b )
+                    <tr>
+                        <th scope="row">{{ $loop->iteration }}</th>
+                        <td>{{ $b->judul_buku }}</td>
+                        <td>{{ $b->penulis_buku }}</td>
+                        <td>{{ $b->penerbit_buku }}</td>
+                        <td>{{ $b->tahun_terbit }}</td>
+                        <td>
+                        <a href="/buku/{{ $b->id }}" class="badge badge-warning">Detail</a>
+                        <a href="/buku/edit/{{ $b->id }}" class="badge badge-success">Edit</a>
+                        <a href="/buku/delete/{{ $b->id }}" class="badge badge-danger">Hapus</a>
+                        </td>
+                    </tr>
+                @endforeach
+                </tbody>
+            </table>
         </div>
-    @endif
-
-    @if (session('status edit berhasil'))
-        <!-- <div class="alert alert-primary">
-            {{ session('$buku->id') }}
-        </div> -->
-
-        <div class="alert alert-warning">
-            {{ session('status edit berhasil') }}
-        </div>
-    @endif
-
-    @if(session('status hapus berhasil'))
-        <div class="alert alert-danger">
-            {{ session('status hapus berhasil') }}
-        </div>
-    @endif
-
-    <table class="table">
-        <thead class="thead-dark">
-            <tr>
-                <th scope="col">ID</th>
-                <th scope="col">Judul Buku</th>
-                <th scope="col">Penulis Buku</th>
-                <th scope="col">Penerbit Buku</th>
-                <th scope="col">Tahun Terbit</th>
-                <th scope="col">Tindakan</th>
-            </tr>
-        </thead>
-
-        <tbody>
-        @foreach( $buku as $b )
-            <tr>
-                <th scope="row">{{ $loop->iteration }}</th>
-                <td>{{ $b->judul_buku }}</td>
-                <td>{{ $b->penulis_buku }}</td>
-                <td>{{ $b->penerbit_buku }}</td>
-                <td>{{ $b->tahun_terbit }}</td>
-                <td>
-                <a href="/buku/{{ $b->id }}" class="badge badge-warning">Detail</a>
-                <a href="/buku/edit/{{ $b->id }}" class="badge badge-success">Edit</a>
-                <a href="/buku/delete/{{ $b->id }}" class="badge badge-danger">Hapus</a>
-                </td>
-            </tr>
-        @endforeach
-        </tbody>
-    </table>
-
+    </section>
 
 @endsection

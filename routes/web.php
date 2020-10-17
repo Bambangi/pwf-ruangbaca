@@ -25,10 +25,10 @@ Route::get('/buku','BukuController@index');
 Route::get('/buku/create','BukuController@create');
 Route::post('/buku/store','BukuController@store');
 Route::get('/buku/edit/{id}','BukuController@edit');
+Route::get('/buku/{buku}','BukuController@show'); 
 Route::put('/buku/update/{id}','BukuController@update');
+Route::get('/buku/delete/{id}','BukuController@destroy'); 
 
 // utk mlht satu buku scr detail
-Route::get('/buku/{buku}','BukuController@show'); 
-Route::get('/buku/delete/{id}','BukuController@destroy'); 
 
  
