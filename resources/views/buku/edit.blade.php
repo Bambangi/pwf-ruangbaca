@@ -3,8 +3,8 @@
 @section('title', 'Edit Buku')
 
 @section('content')
-    <section class="form-edit">
-        <div class="container">
+    <section class="section-awal ">
+        <div class="container container-konten">
             <div class="row ">
                 <div class="col-lg-8 offset-lg-2">
                     <h2 class="judul-section mt-3">Edit Buku</h2>
@@ -15,7 +15,7 @@
                         {{ @csrf_field()  }}
                         {{ method_field('put') }}
                         <div class="form-group">
-                            <label for="judul_buku">Judul_buku</label>
+                            <label for="judul_buku">Judul buku</label>
                             <input type="text" class="form-control" id="judul_buku" placeholder="masukkan judul_buku" name="judul_buku" value="{{ $buku->judul_buku }}">
                         </div>
 
@@ -26,7 +26,7 @@
                         @endif
 
                         <div class="form-group">
-                            <label for="penulis_buku">Penulis_buku</label>
+                            <label for="penulis_buku">Penulis buku</label>
                             <input type="text" class="form-control" id="penulis_buku" placeholder="masukkan penulis_buku" name="penulis_buku" value="{{ $buku->penulis_buku }}">
                         </div>
 
@@ -48,7 +48,7 @@
                         @endif
 
                         <div class="form-group">
-                            <label for="tahun_terbit">Tahun_terbit</label>
+                            <label for="tahun_terbit">Tahun terbit</label>
                             <input type="text" class="form-control" id="tahun_terbit" placeholder="masukkan tahun_terbit" name="tahun_terbit" value="{{ $buku->tahun_terbit }}">
                         </div>
                         
@@ -57,6 +57,8 @@
                                 {{ $errors->first('tahun_terbit') }}
                             </div>
                         @endif
+
+                        
 
                         <button type="submit" class="btn btn-success">Simpan</button>
                         <a href="/buku" class="btn btn-primary">Kembali</a>

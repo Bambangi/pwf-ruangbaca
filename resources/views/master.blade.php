@@ -29,8 +29,12 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                 <div class="navbar-nav ml-auto">
-                  <a class="nav-item nav-link" href="{{url('/')}}">Home</a>
                   <a class="nav-item nav-link" href="{{url('/buku')}}">Buku</a>  
+                  <a class="nav-item nav-link" href="{{url('/anggota')}}">Anggota</a>  
+                  <a class="nav-item nav-link" href="{{url('/petugas')}}">Petugas</a>  
+                  <a class="nav-item nav-link" href="{{url('/rak')}}">Rak</a>  
+                  <a class="nav-item nav-link" href="{{url('/peminjaman')}}">Peminjaman</a>  
+                  <a class="nav-item nav-link" href="{{url('/pengembalian')}}">Pengembalian</a>  
                   <a class="nav-item nav-link" href="{{url('/blog')}}">Blog</a>
                   <form class="form-inline my-2 my-lg-0">
                     <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Register</button>
@@ -42,7 +46,6 @@
         </nav>
       </div>
     </div>
-
 
 
     

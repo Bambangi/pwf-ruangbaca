@@ -2,16 +2,17 @@
 
 @section('title', 'Buku')
 
-    <div class="jumbotron jumbotron-fluid text-center">
-        <div class="container">
+    <div class="jumbotron jumbotron-section jumbotron-fluid jumbotron-buku text-center">
+        <div class="container-jumbotron">
             <h1>Donasi Buku</h1>
             <p class="lead">Raih kebaikan dengan donasi buku, guna melestarikan komunitas membaca semakin merata!</p>
+            <a href="#daftar-buku" class="btn btn-outline-light btn-lg">Oke, Saya Mau Sumbang Buku nih!</a>
         </div>
     </div>
 
 @section('content')
 
-    <section>
+    <section id="daftar-buku">
         <div class="container">
             <h2 class="judul-section text-center">Daftar Buku</h2>
             <hr>
@@ -25,10 +26,6 @@
             @endif
 
             @if (session('status edit berhasil'))
-                <!-- <div class="alert alert-primary">
-                    {{ session('$buku->id') }}
-                </div> -->
-
                 <div class="alert alert-warning">
                     {{ session('status edit berhasil') }}
                 </div>
@@ -46,7 +43,7 @@
                         <th scope="col">ID</th>
                         <th scope="col">Judul Buku</th>
                         <th scope="col">Penulis Buku</th>
-                        <th scope="col">Penerbit Buku</th>
+                        <th scope="col">Penerbit</th>
                         <th scope="col">Tahun Terbit</th>
                         <th scope="col">Tindakan</th>
                     </tr>

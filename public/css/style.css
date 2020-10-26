@@ -1,7 +1,18 @@
-/* BODY */
 section {
+    min-height: 450px;
+}
+
+.section-awal {
     margin-top: 50px;
-    min-height: 600px;
+}
+
+.container-konten {
+    margin-bottom: 200px;
+}
+
+
+.jumbotron {
+    margin-top: 50px;
 }
 
 body {
@@ -20,7 +31,7 @@ hr {
 }
 
 
-.jumbotron {
+.jumbotron-buku {
     background-image: url(https://images.unsplash.com/photo-1485322551133-3a4c27a9d925?ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80);
     background-size: cover;
     background-attachment: fixed;
@@ -32,7 +43,28 @@ hr {
     padding-top: 120px;
 }
 
-.jumbotron::after {
+.jumbotron-anggota {
+    background-image: url(https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80);
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: 40%;
+    height: 480px;
+    position: relative;
+    color: white;
+    margin-top: 55px;
+    padding-top: 120px;
+}
+
+.jumbotron-daftar-anggota {
+    background-image: url(https://images.unsplash.com/photo-1517634124304-9d0f2b369df9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=967&q=80);
+    background-size: cover;
+    background-position-y: 40%;
+    position: relative;
+    color: white;
+}
+
+
+.jumbotron-section::after {
     content: '';
     display: block;
     width: 100%;
@@ -42,7 +74,7 @@ hr {
     bottom: 0;
 }
 
-.jumbotron .container {
+.container-jumbotron {
     z-index: 1;
     position: relative;
 }
@@ -54,13 +86,20 @@ hr {
 .judul-section {
     font-family: raleway;
     font-weight: 700;
-    text-align: center;
+    padding-top: 10px;
+    text-align: center !important;
 }
 
 .gambar-thumnail {
     width: 420px;
 }
 
+
+/* BAGIAN BENEFIT */
+
+section .benefit {
+    min-height: 450px;
+}
 
 
 
@@ -73,6 +112,7 @@ hr {
 
 footer p {
     color: white;
+    font-size: 1em;
 }
 
 
@@ -82,19 +122,23 @@ footer p {
 }
 
 
-/* VERSI DESKTOP */
-@media (min-width: 992px) { 
+/* VERSI MOBILE */
+@media (min-width: 480px) { 
     
     /* ISI KONTEN */
-
-    /* ISI JUMBOTRON */
-    .jumbotron {
-        padding-top: 180px;
+    .text-jumbotron {
+        font-size: 18px;
     }
 
     /* ABOUT */
     .judul-section {
-        text-align: left;
+        font-size: 28px;
         padding-top: 30px;
+    }
+
+    /* BENEFIT */
+    .card {
+        margin-top: 30px;
+        text-align: center;
     }
  }
