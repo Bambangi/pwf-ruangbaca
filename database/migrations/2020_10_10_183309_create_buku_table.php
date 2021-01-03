@@ -14,11 +14,14 @@ class CreateBukuTable extends Migration
     public function up()
     {
         Schema::create('buku', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->bigIncrements('id_buku');
             $table->string('judul_buku')->unique();
             $table->string('penulis_buku');
             $table->string('penerbit_buku');
             $table->integer('tahun_terbit');
+            $table->integer('stok_buku');
+            $table->bigInteger('rak_id_rak');
+            $table->softDeletes('deleted_at', 0);
             $table->timestamps();
         });
     }

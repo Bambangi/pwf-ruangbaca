@@ -1,14 +1,14 @@
-@extends('master')
+@extends('masterAdmin')
 
-@section('title', 'Form Tambah Data Petugas')
+@section('title', 'Tambah Data Petugas')
 
 @section('content')
 
 <section class="section-awal">
-    <div class="container container-konten">
+    <div class="container container-fluid">
         <div class="row">
             <div class="col-lg-8 offset-lg-2">
-                <h1 class="judul-section mt-3">Form Tambah Petugas Baru</h1>
+                <h1 class="judul-section mt-3">Form Tambah Petugas</h1>
                 <hr>
 
                 <form action="/petugas/store" method="post">
@@ -27,7 +27,7 @@
                     @endif
 
                     <div class="form-group">
-                        <label for="alamat_petugas">Alamat Petugas</label>
+                        <label for="alamat_petugas">Alamat</label>
                         <input type="text" class="form-control" id="alamat_petugas" placeholder="Masukkan Alamat Petugas" name="alamat_petugas">
                     </div>
 
@@ -38,7 +38,7 @@
                     @endif
 
                     <div class="form-group">
-                        <label for="telfon_petugas">Nomor Telfon Petugas</label>
+                        <label for="telfon_petugas">Telepon</label>
                         <input type="text" class="form-control" id="telfon_petugas" placeholder="Masukkan Nomor Telfon Petugas" name="telfon_petugas">
                     </div>
 
@@ -49,7 +49,7 @@
                     @endif
 
                     <div class="form-group">
-                        <label for="jk_petugas">Jenis Kelamin</label>
+                        <label for="jk_petugas">Kelamin</label>
                         <select class="form-control" id="jk_petugas" name="jk_petugas">
                             <option>L</option>
                             <option>P</option>

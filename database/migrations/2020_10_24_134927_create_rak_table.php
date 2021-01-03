@@ -14,9 +14,10 @@ class CreateRakTable extends Migration
     public function up()
     {
         Schema::create('rak', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->bigIncrements('id_rak');
             $table->string('nama_rak', 50);
             $table->string('lokasi_rak', 50);
+            $table->softDeletes('deleted_at', 0);
             $table->timestamps();
         });
     }

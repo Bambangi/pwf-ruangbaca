@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Anggota;
 
@@ -12,10 +13,25 @@ class AnggotaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
+    {
+        if ($request->has('cari')) {
+            $anggota = DB::table('anggota')
+                ->where('nama_anggota', 'LIKE', '%' . $request->cari . '%')
+                ->orWhere('alamat_anggota', 'LIKE', '%' . $request->cari . '%')
+                ->orWhere('telfon_anggota', 'LIKE', '%' . $request->cari . '%')
+                ->orWhere('jk_anggota', 'LIKE', '%' . $request->cari . '%')->get();
+        } else {
+            $anggota = Anggota::all();
+        }
+
+        return view('/anggota/index', compact('anggota'));
+    }
+
+    public function pengembalian()
     {
         $anggota = Anggota::all();
-        return view('/anggota/index', compact('anggota'));
+        return view('/pengembalian/index', compact('anggota'));
     }
 
     /**
@@ -25,7 +41,7 @@ class AnggotaController extends Controller
      */
     public function create()
     {
-        return view ('/anggota/create');
+        return view('/anggota/create');
     }
 
     /**
@@ -37,24 +53,15 @@ class AnggotaController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'nama_anggota'   => 'required',
-            'jenis_kelamin'  => 'required',
-            'no_telepon'     => 'required',
-            'alamat'     => 'required'
+            'nama_anggota' => 'required',
+            'alamat_anggota' => 'required',
+            'telfon_anggota' => 'required',
+            'jk_anggota' => 'required'
         ]);
 
-        
-        // Book::create([
-        //         'judul_buku' => $request->judul_buku,
-        //         'penulis_buku' => $request->penulis_buku,
-        //         'penerbit_buku' => $request->penerbit_buku,
-        //         'tahun_terbit' => $request->tahun_terbit
-        //     ]);
-            
+        $status_berhasil = "Data Anggota " . $request->nama_anggota . " Berhasil Ditambahkan!";
         Anggota::create($request->all());
-
-        $status_tambah = "Anggota Bernama " .$request->nama_anggota. " Telah Ditambahkan!";
-        return redirect('/anggota')->with('status tambah anggota berhasil', $status_tambah);
+        return redirect('/anggota')->with('status tambah berhasil', $status_berhasil);
     }
 
     /**
@@ -65,7 +72,7 @@ class AnggotaController extends Controller
      */
     public function show(Anggota $anggota)
     {
-        return view ('/anggota/show', compact('anggota'));
+        return view('/anggota/show', compact('anggota'));
     }
 
     /**
@@ -77,7 +84,7 @@ class AnggotaController extends Controller
     public function edit($id)
     {
         $anggota = Anggota::find($id);
-        return view ('anggota/edit', compact('anggota'));
+        return view('anggota/edit', compact('anggota'));
     }
 
     /**
@@ -97,24 +104,23 @@ class AnggotaController extends Controller
         ]);
 
         $anggota = Anggota::find($id);
-        $anggota ->nama_anggota    = $request->nama_anggota;
-        $anggota ->jenis_kelamin  = $request->jenis_kelamin;
-        $anggota ->no_telepon = $request->no_telepon;
-        $anggota ->alamat  = $request->alamat;
-        $anggota ->save();
+        $anggota->nama_anggota    = $request->nama_anggota;
+        $anggota->jenis_kelamin  = $request->jenis_kelamin;
+        $anggota->no_telepon = $request->no_telepon;
+        $anggota->alamat  = $request->alamat;
+        $anggota->save();
         // Book::find($request->all());
-        $status_edit = "Anggota Bernama " .$request->nama_anggota. " Telah Diedit!";
+        $status_edit = "Anggota Bernama " . $request->nama_anggota . " Telah Diedit!";
         return redirect('/anggota')->with('status edit berhasil', $status_edit);
     }
 
 
     public function destroy(Request $request, $id)
     {
-        $buku = Anggota::find($id);
-        $buku ->nama_anggota = $request->nama_anggota;
-        $buku -> delete();
+        $anggota = Anggota::find($id);
+        $anggota->delete();
 
-        $status_hapus = "Anggota Bernama " .$request->nama_anggota. " Telah Dihapus!";
-        return redirect('/anggota')-> with('status hapus berhasil', $status_hapus);
+        $status_hapus = "Anggota Bernama " . $request->nama_anggota . " Telah Dihapus!";
+        return redirect('/anggota')->with('status hapus berhasil', $status_hapus);
     }
 }

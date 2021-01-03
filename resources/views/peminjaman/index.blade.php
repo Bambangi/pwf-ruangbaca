@@ -1,44 +1,62 @@
-@extends('master')
+@extends('masterAdmin')
 
 @section('title', 'Peminjaman')
 
-    <div class="jumbotron jumbotron-section jumbotron-fluid jumbotron-anggota text-center">
-        <div class="container-jumbotron">
-            <h1>Peminjaman Ruang Baca</h1>
-            <p class="lead">Meminjam buku di Ruang Baca semakin mudah dengan hanya beberapa langkah mudah!</p>
-            <a href="#daftar-anggota" class="btn btn-outline-light btn-lg mt-3">Pinjam Buku Sekarang!</a>
-        </div>
-    </div>
-
 @section('content')
 
-    <section id="daftar-anggota">
-        <div class="container">
-            <h2 class="judul-section text-center">Daftar Peminjaman</h2>
-            <hr>
-            
-            <a href="/peminjaman/create" class="btn btn-primary my-3">Tambahkan Peminjaman Baru</a>
-        
-            @if (session('status tambah peminjaman berhasil'))
-                <div class="alert alert-success">
-                    {{ session('status tambah peminjaman berhasil') }}
-                </div>
-            @endif
+<div class="row mt-5">
+    @if (session('status tambah berhasil'))
+    <div class="alert alert-success">
+        {{ session('status tambah berhasil') }}
+    </div>
+    @endif
 
-            @if (session('status edit berhasil'))
-                <div class="alert alert-warning">
-                    {{ session('status edit berhasil') }}
-                </div>
-            @endif
+    @if (session('status edit berhasil'))
+    <div class="alert alert-warning">
+        {{ session('status edit berhasil') }}
+    </div>
+    @endif
 
-            @if(session('status hapus berhasil'))
-                <div class="alert alert-danger">
-                    {{ session('status hapus berhasil') }}
-                </div>
-            @endif
+    @if(session('status hapus berhasil'))
+    <div class="alert alert-danger">
+        {{ session('status hapus berhasil') }}
+    </div>
+    @endif
+</div>
 
-            <table class="table">
-                <thead class="thead-dark">
+<div class="card card-info">
+    <div class="card-header">
+        <h3 class="card-title">Daftar Peminjam</h3>
+    </div>
+    <div class="card-body">
+        <div class="row mx-auto">
+            <a href="/peminjaman/create" class="btn btn-success my-3 ml-2"><i class="nav-icon fas fa-plus"></i> Tambah Peminjaman</a>
+            <!-- <div class="dropdown">
+                <a class="btn btn-primary dropdown-toggle my-3 ml-2" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class="nav-icon fas fa-download"></i> Download Data
+                </a>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                            <a class="dropdown-item" href="javascript:">CSV</a>
+                            <a class="dropdown-item" href="#">MS. Excel</a>
+                            <a class="dropdown-item" href="#">PDF</a>
+                        </div>
+            </div> -->
+
+        </div>
+
+        <!-- <form action="" class="mb-4" method="get">
+            <div class="input-group">
+                <input type="text" name="cari" class="form-control" placeholder="Cari data.." autocomplete="off">
+                <div class="input-group-append">
+                    <button class="btn btn-info font-weight-bold" type="submit">Search</button>
+                    <a href="/peminjaman" class="btn btn-success font-weight-bold">Reset</a>
+                </div>
+            </div>
+        </form> -->
+
+        <div class="col-fluid ml-2">
+            <table id="datatable" class="table table-bordered table-striped mr-max ml-max">
+                <thead class="bg-info">
                     <tr>
                         <th scope="col">ID</th>
                         <th scope="col">Peminjam</th>
@@ -50,24 +68,25 @@
                 </thead>
 
                 <tbody>
-                
-                @foreach( $peminjaman as $p )
+
+                    @foreach( $peminjaman as $p )
                     <tr>
-                        <th scope="row">{{ $loop->iteration }}</th>
-                        <td>{{ $p->anggota->nama_anggota }}</td>
+                        <th scope="row">{{ $p->id_pinjam }}</th>
+                        <td>({{ $p->anggota->id_anggota }}) - {{ $p->anggota->nama_anggota }} </td>
                         <td>{{ $p->buku->judul_buku }}</td>
-                        <td>{{ $p->nama_petugas }}</td>
+                        <td>{{ $p->petugas->nama_petugas }}</td>
                         <td>{{ $p->tgl_pinjam }}</td>
+
                         <td>
-                        <a href="/peminjaman/{{ $p->id }}" class="badge badge-warning">Detail</a>
-                        <a href="/peminjaman/edit/{{ $p->id }}" class="badge badge-success">Edit</a>
-                        <a href="/peminjaman/delete/{{ $p->id }}" class="badge badge-danger">Hapus</a>
+                            <!--<a href="/peminjaman/{{ $p->id_pinjam }}" class="badge badge-warning">Detail</a>-->
+                            <a href="/peminjaman/edit/{{ $p->id_pinjam }}" class="badge badge-success">Edit</a>
+                            <a href="/peminjaman/delete/{{ $p->id_pinjam }}" class="badge badge-danger">Hapus</a>
                         </td>
                     </tr>
-                @endforeach
+                    @endforeach
                 </tbody>
             </table>
         </div>
-    </section>
+    </div>
 
-@endsection
+    @endsection

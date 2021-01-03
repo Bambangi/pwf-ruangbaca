@@ -14,8 +14,10 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        return view('/auth/register');
     }
+
+
 
     /**
      * Bootstrap any application services.

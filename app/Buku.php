@@ -6,9 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Buku extends Model
 {
-    protected $table = 'tbl_buku';
-    protected $primaryKey = 'id';
-    protected $fillable = ['judul_buku', 'penulis_buku', 'penerbit_buku', 'tahun_terbit'];
+    protected $table = 'buku';
+    protected $primaryKey = 'id_buku';
+    protected $fillable = ['judul_buku', 'penulis_buku', 'penerbit_buku', 'tahun_terbit', 'stok_buku', 'rak_id_rak'];
 
     // UNTUK RELASI ONE TO MANY DENGAN ANGGOTA
     // 1/N BUKU BOLEH DIPINJAM OLEH 1 ANGGOTA (1,N)
@@ -17,16 +17,16 @@ class Buku extends Model
     
     public function pengembalian() 
     {
-        return $this -> hasMany('App\Pengembalian');
+        return $this -> hasMany(Pengembalian::class);
     }
 
     public function rak()
     {
-        return $this -> hasMany('App\Rak');
+        return $this -> belongsTo(Rak::class);
     }
 
     public function peminjaman()
     {
-        return $this -> hasMany('App\Peminjaman');
+        return $this -> hasMany(Peminjaman::class);
     }
 }

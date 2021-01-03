@@ -3,27 +3,35 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Pengembalian extends Model
 {
-    protected $table = 'tbl_pengembalian';
-    protected $primaryKey = 'id';
+    use SoftDeletes;
+    protected $table = 'pengembalian';
+    protected $primaryKey = 'id_kembali';
+    protected $keyType = 'string';
+    protected $dates = ['deleted_at'];
     public $timestamps = false;
-    protected $fillable = ['tgl_kembali', 'anggota_id', 'petugas_id', 'buku_id'];
+    protected $fillable = ['tgl_kembali', 'anggota_id_anggota', 'buku_id_buku', 'petugas_id_petugas'];
 
-    // TABEL PENGEMBALIAN -- BERELASI ONE KE -- TABEL ANGGOTA, PETUGAS, DAN BUKU
+    public function buku()
+    {
+        return $this -> belongsTo(Buku::class);
+    }
+
     public function anggota()
     {
-        return $this -> belongsTo('App\Anggota');
+        return $this -> belongsTo(Anggota::class);
     }
     
     public function petugas()
     {
-        return $this -> belongsTo('App\Petugas');
+        return $this -> belongsTo(Petugas::class);
     }
-    
-    public function buku()
+
+    public function peminjaman()
     {
-        return $this -> belongsTo('App\Buku');
+        return $this -> belongsTo(Peminjaman::class);
     }
 }

@@ -1,6 +1,6 @@
-@extends('master')
+@extends('masterAdmin')
 
-@section('title', 'Detail Anggota')
+@section('title', 'Detail Peminjaman')
 
 @section('content')
 

@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Petugas extends Model
 {
     use SoftDeletes;
-    protected $table = 'tbl_petugas';
+    protected $table = 'petugas';
     protected $primaryKey = 'id_petugas';
     protected $dates = ['deleted_at'];
     protected $fillable = ['nama_petugas', 'alamat_petugas', 'telfon_petugas', 'jk_petugas'];
@@ -20,11 +20,11 @@ class Petugas extends Model
 
     public function pengembalian()
     {
-        return $this -> hasMany('App\pengembalian');
+        return $this -> hasMany(Pengembalian::class);
     }
 
     public function peminjaman()
     {
-        return $this -> hasMany('App\Peminjaman');
+        return $this -> hasMany(Peminjaman::class);
     }
 }

@@ -14,11 +14,12 @@ class CreateAnggotaTable extends Migration
     public function up()
     {
         Schema::create('anggota', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->string('nama_anggota');
-            $table->char('jenis_kelamin', 1);
-            $table->bigInteger('no_telepon');
-            $table->text('alamat');
+            $table->bigIncrements('id_anggota');
+            $table->string('nama_anggota', 50);
+            $table->string('alamat_anggota', 100);
+            $table->string('telfon_anggota', 14);
+            $table->char('jk_anggota', 1);
+            $table->softDeletes('deleted_at', 0);
             $table->timestamps();
         });
     }

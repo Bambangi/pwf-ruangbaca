@@ -14,8 +14,12 @@ class CreatePengembalianTable extends Migration
     public function up()
     {
         Schema::create('pengembalian', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->bigIncrements('id_kembali');
             $table->date('tgl_kembali');
+            $table->bigInteger('anggota_id_anggota');
+            $table->bigInteger('petugas_id_petugas');
+            $table->bigInteger('buku_id_buku');
+            $table->softDeletes('deleted_at', 0);
             $table->timestamps();
         });
     }

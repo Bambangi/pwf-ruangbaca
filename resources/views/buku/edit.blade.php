@@ -1,4 +1,4 @@
-@extends('master')
+@extends('masterAdmin')
 
 @section('title', 'Edit Buku')
 
@@ -57,6 +57,15 @@
                                 {{ $errors->first('tahun_terbit') }}
                             </div>
                         @endif
+
+                        <div class="form-group">
+                        <label for="rak_id_rak">Rak</label>
+                        <select class="form-control" id="rak_id_rak" name="rak_id_rak">
+                            @foreach ( $rak as $r )    
+                                <option value="{{ $r->id_rak }}">{{ $r->nama_rak }}</option>
+                            @endforeach
+                        </select>
+                        </div>
 
                         
 

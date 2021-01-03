@@ -14,8 +14,12 @@ class CreatePeminjamanTable extends Migration
     public function up()
     {
         Schema::create('peminjaman', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->bigIncrements('id_pinjam');
             $table->date('tgl_pinjam');
+            $table->bigInteger('anggota_id_anggota');
+            $table->bigInteger('petugas_id_petugas');
+            $table->bigInteger('buku_id_buku');
+            $table->softDeletes('deleted_at', 0);
             $table->timestamps();
         });
     }

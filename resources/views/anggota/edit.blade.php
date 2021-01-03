@@ -1,4 +1,4 @@
-@extends('master')
+@extends('masterAdmin')
 
 @section('title', 'Edit Buku')
 
@@ -9,7 +9,7 @@
                 <div class="col-lg-8 offset-lg-2">
                     <h2 class="judul-section mt-3">Edit Anggota</h2>
 
-                    <form action="/anggota/update/{{ $anggota->id }}" method="post">
+                    <form action="/anggota/update/{{ $anggota->id_anggota }}" method="post">
                         
                         <!--  csrf= ini biar nginputnya secure oleh laravel -->
                         {{ @csrf_field()  }}
@@ -26,7 +26,7 @@
                         @endif
 
                         <div class="form-group">
-                            <label for="jenis_kelamin">Jenis kelamin</label>
+                            <label for="jenis_kelamin">Kelamin</label>
                             <select name="jenis_kelamin" id="jenis_kelamin" class="form-control">
                                 <option>L</option>
                                 <option>P</option>
@@ -40,8 +40,8 @@
                         @endif
 
                         <div class="form-group">
-                            <label for="no_telepon">No. Telepon</label>
-                            <input type="telp" class="form-control" id="no_telepon" placeholder="masukkan no telepon" name="no_telepon" value="{{ $anggota->no_telepon }}">
+                            <label for="no_telepon">Telepon</label>
+                            <input type="telp" class="form-control" id="telfon_anggota" placeholder="masukkan no telepon" name="telfon_anggota" value="{{ $anggota->telfon_anggota }}">
                         </div>
 
                         @if($errors->has('no_telepon'))
@@ -52,7 +52,7 @@
 
                         <div class="form-group">
                             <label for="alamat">Alamat</label>
-                            <input type="text" class="form-control" id="alamat" placeholder="masukkan alamat" name="alamat" value="{{ $anggota->alamat }}">
+                            <input type="text" class="form-control" id="alamat_anggota" placeholder="masukkan alamat" name="alamat_anggota" value="{{ $anggota->alamat_anggota }}">
                         </div>
                         
                         @if($errors->has('alamat'))

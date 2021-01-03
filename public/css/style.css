@@ -10,6 +10,10 @@ section {
     margin-bottom: 200px;
 }
 
+.containers-konten {
+    margin-bottom: 500px;
+}
+
 
 .jumbotron {
     margin-top: 50px;
@@ -28,6 +32,10 @@ hr {
 
 .nav-link {
     margin-right: 20px;
+}
+
+.btn-modif {
+    border-radius: 30px;
 }
 
 
@@ -142,3 +150,45 @@ footer p {
         text-align: center;
     }
  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 

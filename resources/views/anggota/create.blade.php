@@ -1,13 +1,14 @@
-@extends('master')
+@extends('masterAdmin')
 
 @section('title', 'Form Tambah Data Anggota')
 
 @section('content')
-    <section class="section-awal">
+<section class="section-awal">
     <div class="container container-konten">
         <div class="row">
             <div class="col-lg-8 offset-lg-2">
-                <h1 class="judul-section mt-3 text-center">Form Tambah Anggota Baru</h1>
+                <h1 class="judul-section mt-3">Form Tambah anggota</h1>
+                <hr>
 
                 <form action="/anggota/store" method="post">
                     
@@ -15,7 +16,7 @@
                     {{ @csrf_field()  }}
                     <div class="form-group">
                         <label for="nama_anggota">Nama Anggota</label>
-                        <input type="text" class="form-control" id="nama_anggota" placeholder="masukkan nama anggota" name="nama_anggota" value="{{ old('nama_anggota') }}">
+                        <input type="text" class="form-control" id="nama_anggota" placeholder="Masukkan Nama anggota" name="nama_anggota">
                     </div>
 
                     @if($errors->has('nama_anggota'))
@@ -25,49 +26,41 @@
                     @endif
 
                     <div class="form-group">
-                        <label for="no_telepon">No. Telepon (+62)</label>
-                        <input type="telp" class="form-control" id="no_telepon" placeholder="masukkan no telepon" name="no_telepon" value="{{ old('no_telepon') }}">
+                        <label for="alamat_anggota">Alamat</label>
+                        <input type="text" class="form-control" id="alamat_anggota" placeholder="Masukkan Alamat anggota" name="alamat_anggota">
                     </div>
 
-                    @if($errors->has('no_telepon'))
+                    @if($errors->has('alamat_anggota'))
                         <div class="text-danger">
-                            {{ $errors->first('no_telepon') }}
+                            {{ $errors->first('alamat_anggota') }}
                         </div>
                     @endif
 
                     <div class="form-group">
-                        <label for="jenis_kelamin">Jenis Kelamin</label>
-                        <select class="form-control" id="jenis_kelamin" name="jenis_kelamin">
+                        <label for="telfon_anggota">Telepon</label>
+                        <input type="text" class="form-control" id="telfon_anggota" placeholder="Masukkan Nomor Telfon anggota" name="telfon_anggota">
+                    </div>
+
+                    @if($errors->has('telfon_anggota'))
+                        <div class="text-danger">
+                            {{ $errors->first('telfon_anggota') }}
+                        </div>
+                    @endif
+
+                    <div class="form-group">
+                        <label for="jk_anggota">Kelamin</label>
+                        <select class="form-control" id="jk_anggota" name="jk_anggota">
                             <option>L</option>
                             <option>P</option>
                         </select>
                     </div>
-
-                    @if($errors->has('jenis_kelamin'))
-                        <div class="text-danger">
-                            {{ $errors->first('jenis_kelamin') }}
-                        </div>
-                    @endif
-
-                    <div class="form-group">
-                        <label for="alamat">Alamat</label>
-                        <input type="text" class="form-control" id="alamat" placeholder="masukkan alamat" name="alamat" value="{{ old('alamat') }}">
-                    </div>
                     
-                    @if($errors->has('alamat'))
-                        <div class="text-danger">
-                            {{ $errors->first('alamat') }}
-                        </div>
-                    @endif
-
+                
                     <input type="submit" class="btn btn-success" value="Simpan">
                     <a href="/anggota" class="btn btn-primary">Kembali</a>
                 </form>
-
-                <p class="mt-4">*masukkan data secara lengkap</p>
-                <p>*teliti kembali sebelum klik simpan</p>
             </div>
         </div>
     </div>
-    </section>
+</section>
 @endsection

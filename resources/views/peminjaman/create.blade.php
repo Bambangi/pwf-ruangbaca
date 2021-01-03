@@ -1,4 +1,4 @@
-@extends('master')
+@extends('masterAdmin')
 
 @section('title', 'Form Tambah Data Peminjaman')
 
@@ -25,39 +25,40 @@
                     @endif
 
                     <div class="form-group">
-                        <label for="anggota_id">Peminjam</label>
-                        <select class="form-control" id="anggota_id" name="anggota_id">
+                        <label for="anggota_id_anggota"> Peminjam </label>
+                        <select class="form-control" id="anggota_id_anggota" name="anggota_id_anggota">
                             @foreach ( $anggota as $a )    
-                                <option value="{{ $a->id }}">{{ $a -> nama_anggota }}</option>
+                                <option value="{{ $a->id_anggota }}">{{ $a->nama_anggota }}</option>
                             @endforeach
                         </select>
                     </div>
 
 
-                    @if($errors->has('anggota_id'))
+                    @if($errors->has('anggota_id_anggota'))
                         <div class="text-danger">
-                            {{ $errors->first('anggota_id') }}
+                            {{ $errors->first('anggota_id_anggota') }}
                         </div>
                     @endif
 
                     <div class="form-group">
-                        <label for="buku_id">Buku yang dipinjam :</label>
-                        <select class="form-control" id="buku_id" name="buku_id">
+                        <label for="buku_id_buku"> Buku yang di Pinjam :  </label>
+                        <select class="form-control" id="buku_id_buku" name="buku_id_buku">
                             @foreach ( $buku as $b )    
-                                <option value="{{ $b->id }}">{{ $b->judul_buku }}</option>
+                                <option value="{{ $b->id_buku }}">{{ $b->judul_buku }}</option>
                             @endforeach
                         </select>
                     </div>
 
-                    @if($errors->has('buku_id'))
+
+                    @if($errors->has('buku_id_buku'))
                         <div class="text-danger">
-                            {{ $errors->first('buku_id') }}
+                            {{ $errors->first('buku_id_buku') }}
                         </div>
                     @endif
 
                     <div class="form-group">
-                        <label for="petugas_id">Petugas</label>
-                        <select class="form-control" id="petugas_id" name="petugas_id">
+                        <label for="petugas_id_petugas">Petugas</label>
+                        <select class="form-control" id="petugas_id_petugas" name="petugas_id_petugas">
                             @foreach ( $petugas as $p )    
                                 <option value="{{ $p->id_petugas }}">{{ $p->nama_petugas }}</option>
                             @endforeach
@@ -65,9 +66,9 @@
                     </div>
 
 
-                    @if($errors->has('petugas_id'))
+                    @if($errors->has('petugas_id_petugas'))
                         <div class="text-danger">
-                            {{ $errors->first('petugas_id') }}
+                            {{ $errors->first('petugas_id_petugas') }}
                         </div>
                     @endif
 

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use App\Petugas;
 
 class PetugasController extends Controller
@@ -12,11 +13,19 @@ class PetugasController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $petugas = Petugas::all();
-        // $book = DB::table('books')->get();
-        return view('petugas/index', ['petugas' => $petugas]); 
+        if ($request->has('cari')) {
+            $petugas = DB::table('petugas')
+                ->where('nama_petugas', 'LIKE', '%' . $request->cari . '%')
+                ->orWhere('alamat_petugas', 'LIKE', '%' . $request->cari . '%')
+                ->orWhere('telfon_petugas', 'LIKE', '%' . $request->cari . '%')
+                ->orWhere('jk_petugas', 'LIKE', '%' . $request->cari . '%')->get();
+        } else {
+            $petugas = Petugas::all();
+        }
+
+        return view('petugas/index', ['petugas' => $petugas]);
     }
 
     /**
@@ -44,10 +53,9 @@ class PetugasController extends Controller
             'jk_petugas' => 'required'
         ]);
 
-        $status_berhasil = "Data Petugas " .$request->nama_petugas. " Berhasil Ditambahkan!";
+        $status_berhasil = "Data Petugas " . $request->nama_petugas . " Berhasil Ditambahkan!";
         Petugas::create($request->all());
         return redirect('/petugas')->with('status tambah berhasil', $status_berhasil);
-
     }
 
     /**
@@ -56,8 +64,9 @@ class PetugasController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id_petugas)
+    public function show(Petugas $petugas)
     {
+
         return view('petugas/show', compact('petugas'));
     }
 
@@ -90,13 +99,13 @@ class PetugasController extends Controller
         ]);
 
         $petugas = Petugas::find($id_petugas);
-        $petugas ->nama_petugas = $request->nama_petugas;
-        $petugas ->alamat_petugas = $request->alamat_petugas;
-        $petugas ->telfon_petugas = $request->telfon_petugas;
-        $petugas ->jk_petugas = $request->jk_petugas;
-        $petugas ->save();
-        
-        $status_edit = "Data Petugas " .$request->nama_petugas. " Berhasil Diedit!";
+        $petugas->nama_petugas = $request->nama_petugas;
+        $petugas->alamat_petugas = $request->alamat_petugas;
+        $petugas->telfon_petugas = $request->telfon_petugas;
+        $petugas->jk_petugas = $request->jk_petugas;
+        $petugas->save();
+
+        $status_edit = "Data Petugas " . $request->nama_petugas . " Berhasil Diedit!";
         return redirect('/petugas')->with('status edit berhasil', $status_edit);
     }
 
@@ -109,7 +118,7 @@ class PetugasController extends Controller
     public function destroy($id_petugas)
     {
         $petugas = Petugas::find($id_petugas);
-        $petugas -> delete();
-        return redirect('/petugas')-> with('status hapus berhasil', 'Data Petugas Berhasil Dihapus!');
+        $petugas->delete();
+        return redirect('/petugas')->with('status hapus berhasil', 'Data Petugas Berhasil Dihapus!');
     }
 }
